@@ -1,0 +1,56 @@
+{
+  "name": "2ch",
+  "description": "A JavaScript library for comfortable 2ch watching.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/shiwano/2ch",
+  "author": {
+    "name": "Shogo Iwano",
+    "email": "shiwano@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/shiwano/2ch.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shiwano/2ch/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/shiwano/2ch/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "lib/2ch",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "prepublish": "grunt coffee",
+    "test": "grunt test"
+  },
+  "dependencies": {
+    "lodash": "~1.2.0",
+    "cheerio": "~0.11.0",
+    "iconv": "~2.0.6",
+    "superagent": "~0.14.6",
+    "encoding": "~0.1.6",
+    "moment": "~2.0.0",
+    "eventemitter2": "~0.4.11"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-cli": "~0.1.8",
+    "grunt-contrib-watch": "~0.4.3",
+    "grunt-contrib-coffee": "~0.7.0",
+    "grunt-simple-mocha": "~0.4.0",
+    "mocha": "~1.10.0",
+    "sinon": "~1.7.1",
+    "chai": "~1.6.0",
+    "sinon-chai": "~2.4.0",
+    "nock": "~0.18.2"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.1"
+  },
+  "keywords": []
+}
