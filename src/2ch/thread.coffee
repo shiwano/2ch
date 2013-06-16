@@ -34,6 +34,9 @@ module.exports = class Thread extends EventEmitter2
           @emit 'end', @title
           done? null, []
         when 304 # 更新なし
+          if @messages.length >= 1000
+            @_ended = true
+            @emit 'end', @title
           done? null, []
         when 416 # 削除？
           @emit 'reload', @title
@@ -62,7 +65,7 @@ module.exports = class Thread extends EventEmitter2
     @lastIndex = @messages.length
     @emit 'update', newMessages
 
-    if _.isEmpty(newMessages) and @messages.length > 1001
+    if _.isEmpty(newMessages) and @messages.length >= 1000
       @_ended = true
       @emit 'end', @title
 
