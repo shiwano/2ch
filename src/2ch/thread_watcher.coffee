@@ -15,12 +15,7 @@ class BbsMenuFactory
 bbsMenuFactory = new BbsMenuFactory()
 
 module.exports = class ThreadWatcher extends EventEmitter
-  constructor: (args) ->
-    args = _.defaults args,
-      interval:600000
-      bbsMenu: null
-    {@bbsName, @query, @interval, @bbsMenu} = args
-
+  constructor: (@bbsName, @query, @interval=600000, @bbsMenu) ->
     @interval = 5000 if @interval < 5000
     @bbsMenu = bbsMenuFactory.get() unless @bbsMenu?
     @bbs = new Bbs(@bbsMenu, @bbsName)

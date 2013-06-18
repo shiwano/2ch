@@ -6,10 +6,7 @@ ThreadWatcher = helper.require '2ch/thread_watcher'
 
 describe 'ThreadWatcher', ->
   beforeEach ->
-    @subject = new ThreadWatcher
-      bbsName:'CCさくら',
-      query: /ドキドキはにゃん村/
-      interval: 1000
+    @subject = new ThreadWatcher('CCさくら', /ドキドキはにゃん村/, 1000)
 
   describe '#constructor', ->
     it 'should have interval at least 5000', ->
@@ -17,10 +14,7 @@ describe 'ThreadWatcher', ->
 
     context 'bbsMenu argument not given', ->
       it 'should have bbsMenu property which is the same object every time', ->
-        subject2 = new ThreadWatcher
-          bbsName:'CCさくら',
-          query: /ドキドキはにゃん村/
-          interval: 1000
+        subject2 = new ThreadWatcher('CCさくら', /ドキドキはにゃん村/)
         expect(@subject.bbsMenu).to.be.equal subject2.bbsMenu
 
   describe '#delegateEvents', ->
