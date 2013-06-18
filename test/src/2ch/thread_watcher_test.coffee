@@ -15,17 +15,6 @@ describe 'ThreadWatcher', ->
     it 'should have interval at least 5000', ->
       expect(@subject.interval).to.be.at.least 5000
 
-  describe '#destroy', ->
-    it 'should stop watching', ->
-      @subject.start()
-      @subject.destroy()
-      expect(@subject.isWatching()).to.be.false
-
-    it 'should remove event listeners', ->
-      @subject.undelegateEvents = sinon.stub()
-      @subject.destroy()
-      expect(@subject.undelegateEvents.called).to.be.true
-
   describe '#delegateEvents', ->
     beforeEach (done) ->
       @subject.update => done()

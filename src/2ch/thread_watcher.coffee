@@ -28,10 +28,6 @@ module.exports = class ThreadWatcher extends EventEmitter
       'thread end': (title) => @emit('end', title)
     @delegateEvents()
 
-  destroy: ->
-    @_watching = false
-    @undelegateEvents()
-
   delegateEvents: ->
     _.forEach @events, (fn, key) =>
       [propName, eventName] = key.split /\s+/
