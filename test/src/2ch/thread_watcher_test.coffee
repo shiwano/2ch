@@ -73,7 +73,7 @@ describe 'ThreadWatcher', ->
           expect(thread).to.be.null
           done()
 
-      it 'should emit miss event', (done) ->
+      it 'should emit notfound event', (done) ->
         @subject.bbs.fetchThreadHeader = sinon.stub().callsArgWith 1, null, null
-        @subject.on 'miss', -> done()
+        @subject.on 'notfound', -> done()
         @subject.findNewThread ->

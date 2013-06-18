@@ -79,6 +79,6 @@ module.exports = class ThreadWatcher extends EventEmitter
         @emit 'error', error
         return done error
       else if not header
-        @emit 'miss'
+        @emit 'notfound'
         return done null, null
       done null, new Thread(@bbs, header.number, header.title)
