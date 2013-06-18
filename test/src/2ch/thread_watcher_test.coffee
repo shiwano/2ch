@@ -15,6 +15,14 @@ describe 'ThreadWatcher', ->
     it 'should have interval at least 5000', ->
       expect(@subject.interval).to.be.at.least 5000
 
+    context 'bbsMenu argument not given', ->
+      it 'should have bbsMenu property which is the same object every time', ->
+        subject2 = new ThreadWatcher
+          bbsName:'CCさくら',
+          query: /ドキドキはにゃん村/
+          interval: 1000
+        expect(@subject.bbsMenu).to.be.equal subject2.bbsMenu
+
   describe '#delegateEvents', ->
     beforeEach (done) ->
       @subject.update => done()

@@ -5,6 +5,15 @@ BbsMenu = require './bbs_menu'
 Bbs = require './bbs'
 Thread = require './thread'
 
+class BbsMenuFactory
+  @_bbsMenu: null
+
+  get: ->
+    @_bbsMenu = new BbsMenu() unless @_bbsMenu
+    @_bbsMenu
+
+bbsMenuFactory = new BbsMenuFactory()
+
 module.exports = class ThreadWatcher extends EventEmitter
   constructor: (args) ->
     args = _.defaults args,
@@ -13,7 +22,7 @@ module.exports = class ThreadWatcher extends EventEmitter
     {@bbsName, @query, @interval, @bbsMenu} = args
 
     @interval = 5000 if @interval < 5000
-    @bbsMenu = new BbsMenu() unless @bbsMenu?
+    @bbsMenu = bbsMenuFactory.get() unless @bbsMenu?
     @bbs = new Bbs(@bbsMenu, @bbsName)
     @thread = null
     @_watching = false
