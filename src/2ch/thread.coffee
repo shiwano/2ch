@@ -2,7 +2,6 @@ _ = require 'lodash'
 {EventEmitter2} = require 'eventemitter2'
 
 util = require './util'
-Bbs = require './bbs'
 Message = require './message'
 
 module.exports = class Thread extends EventEmitter2
