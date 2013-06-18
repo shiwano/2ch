@@ -14,6 +14,10 @@ watcher.start();
 
 ## Documentation
 ### Constructor arguments
+```javascript
+new ThreadWatcher(bbsName, query, interval [, bbsMenu ])
+```
+
 #### bbsName
 A string which is a valid board name in 2ch.
 
@@ -27,6 +31,9 @@ A number determining the update interval. It is at least 5000.
 A BbsMenu instance object. In most cases, there is no need to specify.
 
 ### Methods
+The ThreadWatcher class inherited from [EventEmitter2](https://github.com/hij1nx/EventEmitter2).
+So you can use EventEmitter2 methods basically.
+
 #### start
 Start watching 2ch.
 
