@@ -1,10 +1,9 @@
 cheerio = require 'cheerio'
 moment = require 'moment'
-{EventEmitter2} = require 'eventemitter2'
 
 util = require './util'
 
-module.exports = class BbsMenu extends EventEmitter2
+module.exports = class BbsMenu
   constructor: ->
     @menuUrl = 'http://menu.2ch.net/bbsmenu.html'
     @updatedAt = null
@@ -12,9 +11,7 @@ module.exports = class BbsMenu extends EventEmitter2
 
   update: (done) ->
     @fetch (error, res) =>
-      if error
-        @emit 'error', error
-        return done error
+      return done error if error
 
       $ = cheerio.load res.body.text
       $("A[HREF*='2ch.net'],A[HREF*='bbspink.com']").each (index, elem) =>
@@ -25,7 +22,6 @@ module.exports = class BbsMenu extends EventEmitter2
         @_bbsUrls[name] = url
 
       @updatedAt = moment()
-      @emit 'update'
       done?()
 
   fetch: (done) ->

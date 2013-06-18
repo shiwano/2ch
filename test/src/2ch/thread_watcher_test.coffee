@@ -30,9 +30,6 @@ describe 'ThreadWatcher', ->
     beforeEach (done) ->
       @subject.update => done()
 
-    it 'should listen a bbsMenu event', ->
-      expect(@subject.bbsMenu.listeners 'error').to.have.length 1
-
     it 'should listen a thread event', ->
       expect(@subject.thread.listeners 'update').to.have.length 1
 
@@ -41,9 +38,6 @@ describe 'ThreadWatcher', ->
       @subject.update =>
         @subject.undelegateEvents()
         done()
-
-    it 'should remove a event listener from bbsMenu', ->
-      expect(@subject.bbsMenu.listeners 'error').to.have.length 0
 
     it 'should remove a event listener from thread', ->
       expect(@subject.thread.listeners 'update').to.have.length 0

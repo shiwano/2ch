@@ -19,10 +19,6 @@ describe 'BbsMenu', ->
           expect(@bbsMenu.updatedAt).to.be.above updatedAt
           done()
 
-    it 'should emit update event', (done) ->
-      @bbsMenu.on 'update', -> done()
-      @bbsMenu.update()
-
   describe '#fetch', ->
     it 'should return the BBS menu html which is decoded from cp932', (done) ->
       @bbsMenu.fetch (error, res) =>

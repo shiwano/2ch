@@ -21,7 +21,6 @@ module.exports = class ThreadWatcher extends EventEmitter
 
   _initializeEvents: ->
     @events =
-      'bbsMenu error': (error) => @emit('error', error)
       'thread error': (error) => @emit('error', error)
       'thread update': (messages) => @emit('update', messages)
       'thread reload': (title) => @emit('reload', title)
