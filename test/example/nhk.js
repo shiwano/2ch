@@ -1,28 +1,35 @@
-var _2ch = require('../../lib/2ch'),
-    ThreadWatcher = _2ch.ThreadWatcher,
-    BbsMenu = _2ch.BbsMenu;
-
-var bbsMenu = new BbsMenu(); // common object
-
-var watcher = new ThreadWatcher({
-  bbsName: '番組ch(NHK)',
-  query: /NHK総合を常に実況し続けるスレ/,
-  interval: 5000, // at least 5000
-  bbsMenu: bbsMenu
-});
+var ThreadWatcher = require('../../lib/2ch').ThreadWatcher,
+    watcher = new ThreadWatcher('番組ch(NHK)', /NHK総合を常に実況し続けるスレ/, 5000),
+    loaded = false;
 
 watcher.on('update', function(messages) {
+  if (!loaded) {
+    loaded = true;
+    return;
+  }
   messages.forEach(function(message) {
-    console.log(message.number, message.rawString);
+    console.log(
+      message.number,
+      message.name.replace(/<[^<>]+>/g, ''),
+      message.postedAt.format('YYYY/MM/DD HH:mm:ss'), // moment object.
+      message.tripId,
+      message.body.replace(/<[^<>]+>/g, '')
+    );
   });
 });
 
 watcher.on('error', function(error) {
   console.log(error);
+  watcher.stop();
+});
+
+watcher.on('reload', function(title) {
+  console.log(title, 'のスレッドが再読込されました');
+  loaded = false;
 });
 
 watcher.on('begin', function(title) {
-  console.log(title, 'のスレッドが立てられました');
+  console.log(title, 'のスレッドが開始しました');
 });
 
 watcher.on('end', function(title) {
