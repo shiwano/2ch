@@ -1,5 +1,4 @@
 fs = require 'fs'
-encoding = require 'encoding'
 chai = require 'chai'
 chai.use require('sinon-chai')
 
@@ -14,7 +13,7 @@ fixtureCache = {}
 
 exports.getFixture = (name, encoding) =>
   return fixtureCache[name] if fixtureCache[name]
-  result = fs.readFileSync "./test/fixtures/#{name}", encoding
+  result = fs.readFileSync "./test/fixtures/#{name}"
   fixtureCache[name] = result
   result
 
