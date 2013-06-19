@@ -85,7 +85,7 @@ The `notfound` event is emitted, when the watched thread is not found by specifi
 
 ## Examples
 ```javascript
-var ThreadWatcher = require('../../lib/2ch').ThreadWatcher,
+var ThreadWatcher = require('2ch').ThreadWatcher,
     watcher = new ThreadWatcher('番組ch(NHK)', /NHK総合を常に実況し続けるスレ/, 5000),
     loaded = false;
 
