@@ -1,4 +1,4 @@
-# 2ch [![Build Status](https://secure.travis-ci.org/shiwano/2ch.png)](http://travis-ci.org/shiwano/2ch)
+# 2ch [![Build Status](https://secure.travis-ci.org/shiwano/2ch.png?branch=master)](http://travis-ci.org/shiwano/2ch)
 A JavaScript library for comfortable 2ch watching.
 
 ## Getting Started
