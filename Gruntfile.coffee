@@ -10,7 +10,7 @@ module.exports = (grunt) ->
         dest: 'lib/'
         ext: '.js'
 
-    simplemocha:
+    mochaTest:
       lib:
         src: 'test/**/*_test.coffee'
         options:
@@ -27,9 +27,9 @@ module.exports = (grunt) ->
       ]
       tasks: 'test'
 
-  grunt.loadNpmTasks 'grunt-simple-mocha'
+  grunt.loadNpmTasks 'grunt-mocha-test'
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-watch'
 
-  grunt.registerTask 'test', 'simplemocha'
+  grunt.registerTask 'test', 'mochaTest'
   grunt.registerTask 'default', ['test']
