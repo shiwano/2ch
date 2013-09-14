@@ -133,6 +133,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
  * Browserify
 
 ## Release History
+ * 2013-09-14   v0.1.2   Remove cheerio.
  * 2013-06-19   v0.1.1   Modified it.
  * 2013-06-17   v0.1.0   First release.
 
